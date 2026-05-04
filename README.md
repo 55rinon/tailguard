@@ -32,3 +32,8 @@ Working MVP
 - add more assets
 - improve signal depth
 - refine retail UX
+## Demo Screenshot
+
+Current TailGuard MVP interface showing BTC risk state, Tail Risk Score, summary, and suggested size.
+
+![TailGuard demo](tailguard-demo.png)
