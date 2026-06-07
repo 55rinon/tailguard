@@ -1,100 +1,105 @@
 # TailGuard
 
-TailGuard is a retail-friendly crypto risk guidance layer that fetches market data, detects abnormal stress, and converts it into position guidance before users size a trade.
+TailGuard is a retail-friendly crypto tail-risk dashboard that turns market stress into clear position guidance before users size a trade.
 
 ## What it does
 
-TailGuard turns market stress into a simple retail decision interface:
+TailGuard helps users detect abnormal market stress and convert it into simple, action-oriented guidance.
 
-- Risk Level
-- 24h Change
-- Suggested Size
-- Why / Action / Goal
-- Agent Action Log
+The current product flow is:
+
+- Select an asset
+- Fetch live market data
+- Detect the current risk state
+- Show suggested position sizing
+- Explain the reason in plain language
+- Trigger a protective hedge flow
 
 ## Current MVP
 
-The current MVP is built in Bubble.
+The current MVP includes:
 
-Current BTC demo flow:
-
-1. Select BTC
-2. Fetch market data from API
-3. Convert market stress into a retail-facing risk state
-4. Show suggested position size
-5. Show short decision guidance for the user
-
-Current BTC interface shows:
-
-- Risk Level
-- 24h Change
-- Suggested Size
-- Why / Action / Goal
+- Live market input via API
+- Risk Level display
+- 24h Change display
+- Suggested size display
+- AI Explanation block
+- Protective Hedge action button
 - Agent Action Log
+- Bubble → Cloudflare Worker webhook connection
 
 ## Why it matters
 
-Retail users often see market data but still do not know how aggressively they should trade.
+Most retail users do not need more noise.
+They need a simple answer to one question:
 
-TailGuard focuses on risk control rather than prediction. It helps users detect abnormal stress conditions early and convert them into clear position guidance before taking risk.
+**“Should I size normally, reduce exposure, or hedge?”**
 
-## Current direction
+TailGuard is designed as a lightweight risk guidance layer that helps users react before a bad sizing decision is made.
 
-TailGuard is evolving from a static tail-risk dashboard into an API-backed retail risk decision prototype.
+## Current user flow
 
-The current direction is:
+1. User selects BTC
+2. TailGuard fetches market data
+3. TailGuard classifies the current risk state
+4. TailGuard shows:
+   - Risk Level
+   - 24h Change
+   - Suggested size
+   - AI Explanation
+5. User can trigger **Execute Protective Hedge**
+6. The action is logged in the Agent Action Log
+7. A webhook call is sent from Bubble to a Cloudflare Worker for execution-ready hedge flow
 
-- market data input
-- risk interpretation
-- position guidance
-- action-oriented explanation
+## Protective Hedge flow
 
-## Status
+Current implementation:
 
-Working MVP / MOC
+- Button click inside Bubble
+- Action Log updates to protective hedge mode
+- Webhook request is sent to Cloudflare Worker
+- Worker returns an execution-ready response
 
-## Stack
+This means TailGuard is no longer just a static mockup.
+It now includes an external protective action layer.
+
+## Tech stack
 
 - Bubble
-- SoDEX Spot API
-- GitHub
+- Cloudflare Workers
+- API Connector
+- Webhook-based execution-ready flow
 
-## What is already working
+## Current status
 
-- Bubble MVP UI
-- API connection through Bubble API Connector
-- BTC ticker fetch from SoDEX Spot API
-- 24h Change display
-- rule-based Risk Level display
-- rule-based Suggested Size display
-- retail-facing explanation blocks
+Completed:
 
-## Data flow
+- Bubble UI / UX flow
+- Conditional display for risk card
+- AI Explanation alignment
+- Protective Hedge button
+- Agent Action Log switching
+- Bubble → Cloudflare Worker webhook integration
 
-Current flow:
+In progress / next step:
 
-`Asset selection → market data fetch → risk interpretation → suggested size`
+- Signed SoDEX execution layer
+- Deeper risk signals beyond current MVP
+- Stronger agentic automation logic
 
-## Product thesis
+## Demo
 
-TailGuard does not try to predict the next move perfectly.
+Live demo:
+`https://asa55no.bubbleapps.io/version-test?debug_mode=true`
 
-Instead, it helps users detect stress before they size a trade.
+## GitHub
 
-## Next steps
+This repository contains the current TailGuard MVP and supporting project materials.
 
-- improve live API-backed explanation logic
-- expand beyond BTC
-- refine action logic from guidance to stronger execution flow
-- improve product clarity for retail users
-- add more complete insight-to-action workflow
+## Positioning
 
-## Demo Screenshot
+TailGuard is evolving from a market-stress visualization tool into an **agentic risk guidance layer** for retail crypto users.
 
-Current TailGuard MVP interface showing BTC risk state, 24h change, suggested size, and action-oriented guidance.
+It is designed to bridge:
 
-![TailGuard demo](tailguard-demo.png)
-
-## About
-
-Retail-friendly crypto tail-risk dashboard and risk guidance tool.
+**market stress → position guidance → protective action**
