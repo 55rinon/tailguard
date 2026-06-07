@@ -103,3 +103,13 @@ TailGuard is evolving from a market-stress visualization tool into an **agentic 
 It is designed to bridge:
 
 **market stress → position guidance → protective action**
+## Additional Screenshots
+
+### Empty State
+![TailGuard empty](tailguard-01-empty.png)
+
+### BTC Selected
+![TailGuard BTC selected](tailguard-02-btc-selected.png)
+
+### Protective Hedge Triggered
+![TailGuard protective hedge](tailguard-03-protective-hedge.png)
